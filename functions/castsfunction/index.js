@@ -10,12 +10,8 @@
  * @param logger: logging handler used to capture application logs and trace specifically
  *                 to a given execution of a function.
  */
+import cats from "cats-js";
 export default async function (event, context, logger) {
-  logger.info(`Invoking Castsfunction with payload ${JSON.stringify(event.data || {})}`);
-
-  const results = await context.org.dataApi.query('SELECT Id, Name FROM Account');
-
-  logger.info(JSON.stringify(results));
-
-  return results;
+  const catsGenerator = new cats();
+  return catsGenerator.get();
 }
